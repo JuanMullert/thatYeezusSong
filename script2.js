@@ -8,6 +8,7 @@ let albumsTogether = fantasySongs.concat(yeezusSongs, pabloSongs, yeSongs, jikSo
 
 function songSearch() {
     try {
+        
         let enterSong = prompt("enter a song");
         let details = document.createElement("p");
         let textDetails = document.createTextNode("good song");
@@ -15,15 +16,15 @@ function songSearch() {
         let targetDiv = document.getElementById("dropDetails");
         let foundSong = false;
         for (let i = 0; i < albumsTogether.length; i++) {
-            if (enterSong === albumsTogether[i] || enterSong.toLowerCase() === albumsTogether[i].toLowerCase()) {
+            if (enterSong !== null && (enterSong === albumsTogether[i] || enterSong.toLowerCase() === albumsTogether[i].toLowerCase())) {
                 foundSong = true;
                 targetDiv.parentNode.insertBefore(details, targetDiv.nextSibling);
                 break;
                 
-            } 
+            }
         } 
         if (!foundSong) {
-            alert("nope")
+            alert("Song not found")
         }
     }
     catch (err) {
