@@ -11,16 +11,74 @@ const yeezusInfo = {
     Artist: "Kanye West",
     Album: "Yeezus",
     Year: 2013,
-    Songs: ['On Sight',
-        'Black Skinhead',
-        'I Am A God',
-        'New Slaves',
-        'Hold My Liquor',
-        'Blood On The Leaves',
-        'Guilt Trip',
-        'Im In It',
-        'Send It Up',
-        'Bound 2']
+    Genre: "Rap/Industrial Hip Hop",
+    Songs: [
+        {
+            name: 'On Sight',
+            producers: '',
+            lyrics: '...',
+        },
+
+        {
+            name: 'Black Skinhead',
+            producers: '',
+            lyrics: '...'
+        },
+
+        {
+            name: 'I Am A God',
+            producers: '',
+            lyrics: '...'
+        },
+
+        {
+            name: 'New Slaves',
+            producers: '',
+            lyrics: '...'
+        },
+
+        {
+            name: 'Hold My Liquor',
+            producers: '',
+            lyrics: '...'
+        },
+
+        {
+            name: 'Blood On The Leaves',
+            producers: '',
+            lyrics: '...'
+
+        },
+
+        {
+            name: 'Guilt Trip',
+            producers: '',
+            lyrics: '...'
+        },
+
+        {
+            name: 'Im In It',
+            producers: '',
+            lyrics: '...'
+        },
+
+        {
+            name: 'Send It Up',
+            producers: '',
+            lyrics: '...'
+        },
+
+        {
+            name: 'Bound 2',
+            producers: '',
+            lyrics: '...'
+        }
+    ]
+}
+
+for (let i of yeezusInfo.Songs) {
+    if (i.name )
+    console.log(typeof(i.name));
 }
 
 
@@ -40,14 +98,21 @@ function songSearch() {
         let textDetails2 = document.createTextNode("Album: " + yeezusInfo.Album);
         details2.append(textDetails2);
 
+        let details3 = document.createElement("p");
+        details3.setAttribute("class", "details-2")
+        let textDetails3 = document.createTextNode("Genre: " + yeezusInfo.Genre);
+        details3.append(textDetails3);
+
 
         let targetDiv = document.getElementById("dropDetails");
         let foundSong = false;
-        for (let i = 0; i < yeezusInfo.Songs.length; i++) {
-            if (inputValue !== null && (inputValue === yeezusInfo.Songs[i] || inputValue.toLowerCase() === yeezusInfo.Songs[i].toLowerCase())) {
+        
+        for (let i of yeezusInfo.Songs) {
+            if (inputValue !== null && (inputValue === i.name || inputValue.toLowerCase() === i.name.toLowerCase())) {
                 foundSong = true;
                 targetDiv.parentNode.insertBefore(details, targetDiv.nextSibling);
                 targetDiv.parentNode.insertBefore(details2, targetDiv.nextSibling);
+                targetDiv.parentNode.insertBefore(details3, targetDiv.nextSibling);
                 break;
 
             } else if (inputValue.length === 0) {
