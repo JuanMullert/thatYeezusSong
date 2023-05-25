@@ -15,104 +15,119 @@ const yeezusInfo = {
     Songs: [
         {
             name: 'On Sight',
-            producers: '',
+            producer: 'Daft Punk',
             lyrics: '...',
         },
 
         {
             name: 'Black Skinhead',
-            producers: '',
+            producer: '',
             lyrics: '...'
         },
 
         {
             name: 'I Am A God',
-            producers: '',
+            producer: '',
             lyrics: '...'
         },
 
         {
             name: 'New Slaves',
-            producers: '',
+            producer: 'Frank Ocean',
             lyrics: '...'
         },
 
         {
             name: 'Hold My Liquor',
-            producers: '',
+            producer: 'Chief Keef',
             lyrics: '...'
         },
 
         {
             name: 'Blood On The Leaves',
-            producers: '',
+            producer: '',
             lyrics: '...'
 
         },
 
         {
             name: 'Guilt Trip',
-            producers: '',
+            producer: 'Kid Cudi',
             lyrics: '...'
         },
 
         {
             name: 'Im In It',
-            producers: '',
+            producer: '',
             lyrics: '...'
         },
 
         {
             name: 'Send It Up',
-            producers: '',
+            producer: '',
             lyrics: '...'
         },
 
         {
             name: 'Bound 2',
-            producers: '',
+            producer: '',
             lyrics: '...'
         }
-    ]
+    ],
+
+    getSongInfo: function (trackTitle) {
+        for (let songName of this.Songs) {
+            if (songName.name.toLowerCase() === trackTitle.toLowerCase()) {
+                return songName;
+            }
+        }
+        return null;
+    }
 }
 
-for (let i of yeezusInfo.Songs) {
-    if (i.name )
-    console.log(typeof(i.name));
-}
+// const getInfo = yeezusInfo.getSongInfo('on sight')
+// console.log(getInfo)
+
+
+
+// console.log(yeezusInfo.Songs[0].name)
 
 
 function songSearch() {
     try {
         let targetInputField = document.getElementById("inputSong");
         let inputValue = targetInputField.value;
-
-        let details = document.createElement("p");
-        details.setAttribute("class", "details-2");
-        let textDetails = document.createTextNode("Year: " + yeezusInfo.Year);
-        details.appendChild(textDetails);
-
-
-        let details2 = document.createElement("p");
-        details2.setAttribute("class", "details-2")
-        let textDetails2 = document.createTextNode("Album: " + yeezusInfo.Album);
-        details2.append(textDetails2);
-
-        let details3 = document.createElement("p");
-        details3.setAttribute("class", "details-2")
-        let textDetails3 = document.createTextNode("Genre: " + yeezusInfo.Genre);
-        details3.append(textDetails3);
-
-
         let targetDiv = document.getElementById("dropDetails");
         let foundSong = false;
-        
-        for (let i of yeezusInfo.Songs) {
-            if (inputValue !== null && (inputValue === i.name || inputValue.toLowerCase() === i.name.toLowerCase())) {
+
+        for (let track of yeezusInfo.Songs) {
+            if (inputValue !== null && inputValue === track.name.toLowerCase()) {
                 foundSong = true;
+
+                let details = document.createElement("p");
+                details.setAttribute("class", "details-2");
+                let textDetails = document.createTextNode("Year: " + yeezusInfo.Year);
+                details.appendChild(textDetails);
+
+                let details2 = document.createElement("p");
+                details2.setAttribute("class", "details-2")
+                let textDetails2 = document.createTextNode("Album: " + yeezusInfo.Album);
+                details2.append(textDetails2);
+
+                let details3 = document.createElement("p");
+                details3.setAttribute("class", "details-2")
+                let textDetails3 = document.createTextNode("Genre: " + yeezusInfo.Genre);
+                details3.append(textDetails3);
+
+                let details4 = document.createElement("p");
+                details4.setAttribute("class", "details-2")
+                let textDetails4 = document.createTextNode("Producer: " + track.producer);
+                details4.append(textDetails4);
+
                 targetDiv.parentNode.insertBefore(details, targetDiv.nextSibling);
                 targetDiv.parentNode.insertBefore(details2, targetDiv.nextSibling);
                 targetDiv.parentNode.insertBefore(details3, targetDiv.nextSibling);
+                targetDiv.parentNode.insertBefore(details4, targetDiv.nextSibling);
                 break;
 
             } else if (inputValue.length === 0) {
