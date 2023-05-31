@@ -15,62 +15,72 @@ const yeezusInfo = {
     Songs: [
         {
             name: 'On Sight',
-            producer: 'Daft Punk',
+            producer: 'Daft Punk, Mike Dean, Kanye West',
+            features: 'No features',
             lyrics: '...',
         },
 
         {
             name: 'Black Skinhead',
-            producer: '',
+            producer: 'Daft Punk, Kanye West, Gesaffelstein',
+            features: 'No features',
             lyrics: '...'
         },
 
         {
             name: 'I Am A God',
-            producer: '',
+            producer: 'Daft Punk, Hudson Mohawke, Mike Dean, Kanye West',
+            features: 'No features',
             lyrics: '...'
         },
 
         {
             name: 'New Slaves',
-            producer: 'Frank Ocean',
+            producer: 'Noah Goldstein, Travis Scott, Mike Dean, Kanye West, Arca',
+            features: 'Frank Ocean',
             lyrics: '...'
         },
 
         {
             name: 'Hold My Liquor',
-            producer: 'Chief Keef',
-            lyrics: '...'
-        },
-
-        {
-            name: 'Blood On The Leaves',
-            producer: '',
-            lyrics: '...'
-
-        },
-
-        {
-            name: 'Guilt Trip',
-            producer: 'Kid Cudi',
+            producer: 'Noah Goldstein, Arca, Mike Dean, Kanye West',
+            features: 'Chief keef, Justin Vernon',
             lyrics: '...'
         },
 
         {
             name: 'Im In It',
-            producer: '',
+            producer: 'Noah Goldstein, Arca, Mike Dean, Kanye West',
+            features: 'Assassin, Justin Vernon',
+            lyrics: '...'
+
+        },
+
+        {
+            name: 'Blood On The Leaves',
+            producer: 'Arca, Mike Dean, 88-Keys, Kanye West',
+            features: 'No features',
+            lyrics: '...'
+        },
+
+        {
+            name: 'Guilt Trip',
+            producer: 'Travis Scott, Mike Dean, Kanye West',
+            features: 'Kid Cudi, Popcaan',
             lyrics: '...'
         },
 
         {
             name: 'Send It Up',
-            producer: '',
+            producer: 'Daft Punk, Gesaffelstein, Arca, Mike Dean, Kanye West',
+            features: 'King Louie, Benie Man',
             lyrics: '...'
         },
 
         {
             name: 'Bound 2',
-            producer: '',
+            producer: 'Noah Goldstein, Mike Dean, Kanye West, No I.D',
+            features: 'Charlie Wilson',
             lyrics: '...'
         }
     ],
@@ -82,16 +92,19 @@ const yeezusInfo = {
             }
         }
         return null;
-    }
+    },
+
+    getFeatureInfo: function (feats) {
+        for (let feat of this.Songs) {
+            if (feat.features.toLowerCase() === feats.toLowerCase()) {
+                return feat;
+            }
+        }
+        return null;
+    },
 }
 
-// const getInfo = yeezusInfo.getSongInfo('on sight')
-// console.log(getInfo)
-
-
-
-// console.log(yeezusInfo.Songs[0].name)
-
+let previousSong = "";
 
 function songSearch() {
     try {
@@ -100,9 +113,27 @@ function songSearch() {
         let targetDiv = document.getElementById("dropDetails");
         let foundSong = false;
 
+        if (inputValue === previousSong) {
+            alert("Song already displayed.");
+            return;
+          }
+      
+
         for (let track of yeezusInfo.Songs) {
+            for (let ft of yeezusInfo.Songs) {
+                if (inputValue !== null && inputValue === ft.features) {
+                }
+            }
             if (inputValue !== null && inputValue === track.name.toLowerCase()) {
                 foundSong = true;
+                previousSong = inputValue;
+
+                targetDiv.innerHTML = "";
+
+                let image = document.createElement("img");
+                image.setAttribute("src", "../images/yeezusimg.png");
+                let img = "../images/yeezusimg.png";
+                image.append(img)
 
                 let details = document.createElement("p");
                 details.setAttribute("class", "details-2");
@@ -121,13 +152,21 @@ function songSearch() {
 
                 let details4 = document.createElement("p");
                 details4.setAttribute("class", "details-2")
-                let textDetails4 = document.createTextNode("Producer: " + track.producer);
+                let textDetails4 = document.createTextNode("Producers: " + track.producer);
                 details4.append(textDetails4);
 
-                targetDiv.parentNode.insertBefore(details, targetDiv.nextSibling);
-                targetDiv.parentNode.insertBefore(details2, targetDiv.nextSibling);
-                targetDiv.parentNode.insertBefore(details3, targetDiv.nextSibling);
-                targetDiv.parentNode.insertBefore(details4, targetDiv.nextSibling);
+                let details5 = document.createElement("p");
+                details5.setAttribute("class", "details-2")
+                let textDetails5 = document.createTextNode("Features: " + track.features);
+                details5.append(textDetails5);
+
+                targetDiv.appendChild(details);
+                targetDiv.appendChild(details2);
+                targetDiv.appendChild(details3);
+                targetDiv.appendChild(details4);
+                targetDiv.appendChild(details5);
+                targetDiv.appendChild(image);
+
                 break;
 
             } else if (inputValue.length === 0) {
