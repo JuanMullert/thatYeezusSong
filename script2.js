@@ -17,42 +17,42 @@ const yeezusInfo = {
             name: 'On Sight',
             producer: 'Daft Punk, Mike Dean, Kanye West',
             features: 'No features',
-            lyrics: '...',
+            lyrics: '',
         },
 
         {
             name: 'Black Skinhead',
             producer: 'Daft Punk, Kanye West, Gesaffelstein',
             features: 'No features',
-            lyrics: '...'
+            lyrics: ''
         },
 
         {
             name: 'I Am A God',
             producer: 'Daft Punk, Hudson Mohawke, Mike Dean, Kanye West',
             features: 'No features',
-            lyrics: '...'
+            lyrics: ''
         },
 
         {
             name: 'New Slaves',
             producer: 'Noah Goldstein, Travis Scott, Mike Dean, Kanye West, Arca',
             features: 'Frank Ocean',
-            lyrics: '...'
+            lyrics: ''
         },
 
         {
             name: 'Hold My Liquor',
             producer: 'Noah Goldstein, Arca, Mike Dean, Kanye West',
             features: 'Chief keef, Justin Vernon',
-            lyrics: '...'
+            lyrics: ''
         },
 
         {
             name: 'Im In It',
             producer: 'Noah Goldstein, Arca, Mike Dean, Kanye West',
             features: 'Assassin, Justin Vernon',
-            lyrics: '...'
+            lyrics: ''
 
         },
 
@@ -60,28 +60,28 @@ const yeezusInfo = {
             name: 'Blood On The Leaves',
             producer: 'Arca, Mike Dean, 88-Keys, Kanye West',
             features: 'No features',
-            lyrics: '...'
+            lyrics: ''
         },
 
         {
             name: 'Guilt Trip',
             producer: 'Travis Scott, Mike Dean, Kanye West',
             features: 'Kid Cudi, Popcaan',
-            lyrics: '...'
+            lyrics: ''
         },
 
         {
             name: 'Send It Up',
             producer: 'Daft Punk, Gesaffelstein, Arca, Mike Dean, Kanye West',
             features: 'King Louie, Benie Man',
-            lyrics: '...'
+            lyrics: ''
         },
 
         {
             name: 'Bound 2',
             producer: 'Noah Goldstein, Mike Dean, Kanye West, No I.D',
             features: 'Charlie Wilson',
-            lyrics: '...'
+            lyrics: ''
         }
     ],
 
@@ -102,6 +102,17 @@ const yeezusInfo = {
         }
         return null;
     },
+
+    getLyrics: function (theLyrics) {
+        for (let genius of this.Songs) {
+            if (genius.lyrics.toLowerCase() === theLyrics.toLowerCase()) {
+                return genius;
+            }
+        }
+        return null;
+    },
+
+    
 }
 
 let previousSong = "";
@@ -160,11 +171,17 @@ function songSearch() {
                 let textDetails5 = document.createTextNode("Features: " + track.features);
                 details5.append(textDetails5);
 
+                let link = document.createElement("a");
+                link.setAttribute("href", "https://genius.com/albums/Kanye-west/Yeezus")
+                let textDetails6 = document.createTextNode("Lyrics" + track.lyrics);
+                link.append(textDetails6);
+
                 targetDiv.appendChild(details);
                 targetDiv.appendChild(details2);
                 targetDiv.appendChild(details3);
                 targetDiv.appendChild(details4);
                 targetDiv.appendChild(details5);
+                targetDiv.appendChild(link);
                 targetDiv.appendChild(image);
 
                 break;
