@@ -18,41 +18,54 @@ const yeezusInfo = {
             producer: 'Daft Punk, Mike Dean, Kanye West',
             features: 'No features',
             lyrics: '',
+            listen: '', 
+            listen2: ''
         },
 
         {
             name: 'Black Skinhead',
             producer: 'Daft Punk, Kanye West, Gesaffelstein',
             features: 'No features',
-            lyrics: ''
+            lyrics: '',
+            listen: '',
+            listen2: ''
         },
 
         {
             name: 'I Am A God',
             producer: 'Daft Punk, Hudson Mohawke, Mike Dean, Kanye West',
             features: 'No features',
-            lyrics: ''
+            lyrics: '',
+            listen: '',
+            listen2: ''
+
         },
 
         {
             name: 'New Slaves',
             producer: 'Noah Goldstein, Travis Scott, Mike Dean, Kanye West, Arca',
             features: 'Frank Ocean',
-            lyrics: ''
+            lyrics: '',
+            listen: '',
+            listen2: ''
         },
 
         {
             name: 'Hold My Liquor',
             producer: 'Noah Goldstein, Arca, Mike Dean, Kanye West',
             features: 'Chief keef, Justin Vernon',
-            lyrics: ''
+            lyrics: '',
+            listen: '',
+            listen2: ''
         },
 
         {
             name: 'Im In It',
             producer: 'Noah Goldstein, Arca, Mike Dean, Kanye West',
             features: 'Assassin, Justin Vernon',
-            lyrics: ''
+            lyrics: '',
+            listen: '',
+            listen2: ''
 
         },
 
@@ -60,28 +73,36 @@ const yeezusInfo = {
             name: 'Blood On The Leaves',
             producer: 'Arca, Mike Dean, 88-Keys, Kanye West',
             features: 'No features',
-            lyrics: ''
+            lyrics: '',
+            listen: '',
+            listen2: ''
         },
 
         {
             name: 'Guilt Trip',
             producer: 'Travis Scott, Mike Dean, Kanye West',
             features: 'Kid Cudi, Popcaan',
-            lyrics: ''
+            lyrics: '',
+            listen: '',
+            listen2: ''
         },
 
         {
             name: 'Send It Up',
             producer: 'Daft Punk, Gesaffelstein, Arca, Mike Dean, Kanye West',
             features: 'King Louie, Benie Man',
-            lyrics: ''
+            lyrics: '',
+            listen: '',
+            listen2: ''
         },
 
         {
             name: 'Bound 2',
             producer: 'Noah Goldstein, Mike Dean, Kanye West, No I.D',
             features: 'Charlie Wilson',
-            lyrics: ''
+            lyrics: '',
+            listen: '',
+            listen2: ''
         }
     ],
 
@@ -111,6 +132,25 @@ const yeezusInfo = {
         }
         return null;
     },
+
+    getListen: function (theListen) {
+        for (let listenSong of this.Songs) {
+            if (listenSong.listen.toLowerCase() === theListen.toLowerCase()) {
+                return listenSong;
+            }
+        }
+        return null;
+    },
+
+    getListen2: function (theListen2) {
+        for (let listenSong2 of this.Songs) {
+            if (listenSong2.listen2.toLowerCase() === theListen2.toLowerCase()) {
+                return listenSong2;
+            }
+        }
+        return null;
+    }
+
 
     
 }
@@ -151,11 +191,6 @@ function songSearch() {
                 let textDetails = document.createTextNode("Year: " + yeezusInfo.Year);
                 details.appendChild(textDetails);
 
-                let details2 = document.createElement("p");
-                details2.setAttribute("class", "details-2")
-                let textDetails2 = document.createTextNode("Album: " + yeezusInfo.Album);
-                details2.append(textDetails2);
-
                 let details3 = document.createElement("p");
                 details3.setAttribute("class", "details-2")
                 let textDetails3 = document.createTextNode("Genre: " + yeezusInfo.Genre);
@@ -171,18 +206,30 @@ function songSearch() {
                 let textDetails5 = document.createTextNode("Features: " + track.features);
                 details5.append(textDetails5);
 
-                let link = document.createElement("a");
-                link.setAttribute("href", "https://genius.com/albums/Kanye-west/Yeezus")
-                let textDetails6 = document.createTextNode("Lyrics" + track.lyrics);
-                link.append(textDetails6);
+                let linkLyrics = document.createElement("a");
+                linkLyrics.setAttribute("href", "https://genius.com/albums/Kanye-west/Yeezus")
+                let textDetails6 = document.createTextNode("Lyrics " + track.lyrics);
+                linkLyrics.append(textDetails6);
+
+                let listen2Me = document.createElement("a");
+                listen2Me.setAttribute("href", "https://music.apple.com/us/album/yeezus/1440873068")
+                let textDetails7 = document.createTextNode(" Apple Music" + track.listen);
+                listen2Me.append(textDetails7);
+
+                let listen2Me2 = document.createElement("a");
+                listen2Me2.setAttribute("href", "https://open.spotify.com/album/7D2NdGvBHIavgLhmcwhluK?si=K2OPCUHzQ3aViORBAC1_4A")
+                let textDetails8 = document.createTextNode(" Spotify" + track.listen2);
+                listen2Me2.append(textDetails8);
 
                 targetDiv.appendChild(details);
-                targetDiv.appendChild(details2);
                 targetDiv.appendChild(details3);
                 targetDiv.appendChild(details4);
                 targetDiv.appendChild(details5);
-                targetDiv.appendChild(link);
+                targetDiv.appendChild(linkLyrics);
+                targetDiv.appendChild(listen2Me);
+                targetDiv.appendChild(listen2Me2);
                 targetDiv.appendChild(image);
+                
 
                 break;
 
