@@ -182,7 +182,7 @@ function songSearch() {
                 targetDiv.innerHTML = "";
 
                 let image = document.createElement("img");
-                image.setAttribute("src", "../images/yeezusimg.png");
+                image.setAttribute("src", "../images/yeeee.png");
                 let img = "../images/yeezusimg.png";
                 image.append(img)
 
