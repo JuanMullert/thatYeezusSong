@@ -182,8 +182,8 @@ function songSearch() {
                 targetDiv.innerHTML = "";
 
                 let image = document.createElement("img");
-                image.setAttribute("src", "../images/yeeee.png");
-                let img = "../images/yeeee.png";
+                image.setAttribute("src", "./images/yeeee.png");
+                let img = "./images/yeeee.png";
                 image.append(img)
 
                 let details = document.createElement("p");
