@@ -249,11 +249,3 @@ function songSearch() {
 }
 
 btn1.onclick = songSearch; // function is called when button is clicked.
-
-console.log(yeezusInfo)
-
-
-
-
-
-
